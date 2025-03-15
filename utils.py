@@ -210,14 +210,15 @@ def answer_query(query, use_text, use_db, use_kg, use_web):
                 "source": "SQL Database"
             })
 
-    # Web search via SerpAPI
+    # Web search via SerpAPI with processed output
     if use_web:
         try:
             with st.spinner("Searching the web..."):
                 search = SerpAPIWrapper()
                 web_result = search.run(query)
+                processed_web_result = reframe_web_output(web_result)
                 answers.append({
-                    "result": web_result,
+                    "result": processed_web_result,
                     "source": "Web Search"
                 })
         except Exception as e:
@@ -250,3 +251,16 @@ def answer_query(query, use_text, use_db, use_kg, use_web):
         combined_answer = llm.invoke(prompt)
         sources = ", ".join([a["source"] for a in answers])
         return combined_answer.content, f"Combined from: {sources}"
+
+
+def reframe_web_output(raw_web_result):
+    """
+    Uses the LLM to process the raw output from the web search into a clear, concise answer.
+    """
+    llm = get_llm()
+    prompt = (
+        f"The following is a raw web search result: {raw_web_result}\n\n"
+        "Please process and summarize it into a concise and informative answer."
+    )
+    processed = llm.invoke(prompt)
+    return processed.content
