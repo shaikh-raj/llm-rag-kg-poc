@@ -1,0 +1,24 @@
+Welcome to the LLM POC Project—a cutting-edge demonstration of integrated AI capabilities, knowledge graphs, dynamic databases, and real-time search. This project showcases how advanced language models can interact with structured and unstructured data to deliver contextually rich responses.
+
+At its core, the project allows users to either enter their own text or use a pre-populated default context. Additionally, users can upload Excel files to simulate database interactions; these records are then stored in an SQLite database. Meanwhile, the text input is embedded using Gemini and stored in Milvus for fast, similarity-based retrieval, and a detailed knowledge graph is built and maintained in Neo4j Aura.
+
+When a query is made, the system retrieves the most relevant context from Milvus, the knowledge graph, and the SQLite database. The aggregated information is then processed by the Gemini LLM through LangChain’s orchestration, with LangSmith logging every interaction. An optional web search feature powered by SerpAPI further enriches the response.
+
+The Streamlit UI is designed for simplicity and flexibility:
+Text Input: A text area with an option to auto-fill default content.
+Database Upload: An upload button for Excel files, with a preview for both user-uploaded and default database data.
+Mode Selection: Buttons to choose between Text, DB, or both, with an option for web search.
+Output: A query field that returns responses below, along with a session-based log of all previous interactions.
+Flow Diagram: A visual representation of the tool’s architecture will be displayed at the end.
+
+This project integrates the following tools and techniques:
+Gemini: LLM Embedding & Text Generation
+LangSmith: LLM Logging
+LangChain: Process Chaining
+Milvus: Vector Database for RAG
+Streamlit: User Interface
+SQLite: Database Storage
+Neo4j Aura: Knowledge Graph Construction
+SerpAPI: Web Search Integration
+
+Overall, the LLM POC Project illustrates the seamless fusion of modern AI methodologies with robust data management systems, laying the groundwork for future innovations in intelligent, data-driven applications.
