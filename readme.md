@@ -13,7 +13,7 @@ This project demonstrates integration of various AI capabilities using LangChain
 - Text input processing with vector embeddings
 - Knowledge graph creation and querying
 - Database integration for structured data
-- Web search capability via MCP (Model Context Protocol)
+- Web search capability via SerpAPI
 - Streamlit-based user interface
 
 ## Setup Instructions
@@ -31,6 +31,7 @@ This project demonstrates integration of various AI capabilities using LangChain
      NEO4J_URI = "your-neo4j-uri"
      NEO4J_USERNAME = "your-neo4j-username"
      NEO4J_PASSWORD = "your-neo4j-password"
+     SERPAPI_API_KEY = "your-serpapi-key"
      ```
 
 3. Run the application:
@@ -59,18 +60,20 @@ The application uses a modular architecture:
 - **FAISS**: Vector storage for text embeddings
 - **Neo4j**: Knowledge graph storage and querying
 - **SQLite**: Relational database for structured data
-- **MCP**: Model Context Protocol for web search capabilities
+- **SerpAPI**: Web search capabilities
 
 ## Project Structure
 
 ```
 ├── app.py                 # Main Streamlit application
-├── mcp_client.py          # MCP client implementation
-├── web_search_server.py   # Web search server implementation
+├── utils.py               # Helper Library
 ├── requirements.txt       # Project dependencies
 ├── flow_diagram.png       # System architecture diagram
 └── README.md              # Project documentation
 ```
+
+## Project Flow
+![Project Flow](https://raw.githubusercontent.com/shaikh-raj/llm-rag-kg-poc/refs/heads/main/mermaid-diagram.png)
 
 ## Future Improvements
 
